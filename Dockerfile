@@ -6,14 +6,14 @@ RUN pip install asreview exoscale
 
 # Set up synergy
 RUN mkdir -p /app/synergy
-COPY pyodss-custom.zip /app/synergy/pyodss-custom.zip
-RUN pip install /app/synergy/pyodss-custom.zip
+# COPY docker/pyodss-custom.zip /app/synergy/pyodss-custom.zip
+# RUN pip install /app/synergy/pyodss-custom.zip
 
 # Set up the working directory and copy the script
 WORKDIR /app
 
 # Copy the simulation script into the container
-COPY run_simulation.sh .
+COPY docker/run_simulation.sh .
 COPY upload_simulation_to_storage.py .
 
 # Set the entrypoint and default command
