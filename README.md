@@ -8,25 +8,23 @@ To use the image, you can run it with docker run, passing any required environme
 
 ```console
 docker run --rm \
-  -e EXO_ACCESS_KEY_ID=<access_key> \
-  -e EXO_SECRET_ACCESS_KEY=<secret_key> \
-  -e ACCOUNT=<account> \
-  -e ACCOUNT_NAME=<account_name> \
+  -e EXOSCALE_API_KEY=<access_key> \
+  -e EXOSCALE_API_SECRET=<secret_key> \
+  -e EXOSCALE_STORAGE_ZONE=de-fra-1 \
   -e DATASET=<dataset> \
   -e SETTINGS="<settings>" \
-  -e SIMULATION=<simulation> \
+  -e SIMULATION=<simulation_name> \
   -e SIMULATION_ID=<simulation_id> \
   asreview-simulate:latest
 ```
 
-Replace <access_key>, <secret_key>, <account>, <account_name>, <dataset>, <settings>, <simulation>, and <simulation_id> with the appropriate values.
+Replace <access_key>, <secret_key>, \<dataset>, \<settings>, <simulation_name>, and <simulation_id> with the appropriate values.
 
 The following environment variables are required:
 
-    EXO_ACCESS_KEY_ID: the Exoscale access key ID
-    EXO_SECRET_ACCESS_KEY: the Exoscale secret access key
-    ACCOUNT: the Exoscale account name
-    ACCOUNT_NAME: account nickname
+    EXOSCALE_API_KEY: the Exoscale access key ID
+    EXOSCALE_API_SECRET: the Exoscale secret access key
+    EXOSCALE_STORAGE_ZONE: the Exoscale storage zone (e.g., de-fra-1)
     DATASET: the name of the dataset to use (in the form project_name:dataset_name)
     SETTINGS: the settings for the simulation
     SIMULATION: the name of the simulation to run
@@ -45,19 +43,17 @@ Here's an example command that runs a simulation with the provided environment v
 
 ```console
 docker run --rm `
-  -e EXO_ACCESS_KEY_ID=<access_key> `
-  -e EXO_SECRET_ACCESS_KEY=<secret_key> `
-  -e ACCOUNT=<account> `
-  -e ACCOUNT_NAME=<account_name> `
-  -e BUCKET=asreview-output `
+  -e EXOSCALE_API_KEY=<access_key> `
+  -e EXOSCALE_API_SECRET=<secret_key> `
+  -e EXOSCALE_STORAGE_ZONE=de-fra-1 `
   -e DATASET=benchmark:van_de_schoot_2017 `
   -e SETTINGS="-m nb -e tfidf" `
-  -e SIMULATION=test.asreview `
-  -e SIMULATION_ID=test1 `
+  -e SIMULATION=vds2017.asreview `
+  -e SIMULATION_ID=simulation_test `
   asreview-simulate:latest
 ```
 
-Replace <access_key>, <secret_key>, \<account>, and <account_name> with your Exoscale access key ID, secret access key, account name, and account name, respectively.
+Replace <access_key> and <secret_key> with your Exoscale access key ID, secret access key, account name, and account name, respectively.
 
 ## License
 MIT License
