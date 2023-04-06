@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy the simulation script into the container
 COPY docker/run_simulation.sh .
-COPY upload_simulation_to_storage.py .
+COPY docker/upload_simulation_to_storage.py .
 
 # Set the entrypoint and default command
 ENTRYPOINT ["./run_simulation.sh"]
