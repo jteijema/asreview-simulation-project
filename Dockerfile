@@ -4,6 +4,8 @@ FROM python:3.9-slim-buster
 RUN apt-get update
 RUN pip install asreview exoscale
 
+LABEL org.opencontainers.image.source https://github.com/jteijema/asreview-cloud-simulation-project
+
 # Set up synergy
 RUN mkdir -p /app/synergy
 # COPY docker/pyodss-custom.zip /app/synergy/pyodss-custom.zip
