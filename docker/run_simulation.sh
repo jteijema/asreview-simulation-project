@@ -3,22 +3,15 @@
 # Load the dataset
 # python -m synergy get $DATASET
 
+# prints
+echo "Running simulation..."
+echo "DATASET: $DATASET"
+echo "SETTINGS: $SETTINGS"
+echo "SIMULATION: $SIMULATION"
+echo "SIMULATION_ID: $SIMULATION_ID"
+
 # Run the simulation
 asreview simulate $DATASET -s $SIMULATION $SETTINGS
 
-cat << EOF > /app/exoscale/exoscale.toml
-defaultaccount = "$ACCOUNT_NAME"
-
-[[accounts]]
-  account = "$ACCOUNT"
-  defaultZone = "de-fra-1"
-  endpoint = "https://api.exoscale.com/v1"
-  environment = ""
-  key = "$EXO_ACCESS_KEY_ID"
-  name = "$ACCOUNT_NAME"
-  secret = "$EXO_SECRET_ACCESS_KEY"
-EOF
-
-# Upload the results to the Exoscale Object Storage service
-EXO_URI="sos://$BUCKET/$SIMULATION_ID/$SIMULATION"
-exo storage upload $SIMULATION $EXO_URI --acl public-read
+# Run the Python script
+python upload_simulation_to_storage.py "$SIMULATION" "$SIMULATION_ID" "$BUCKET"

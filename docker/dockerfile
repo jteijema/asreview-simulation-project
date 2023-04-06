@@ -1,19 +1,8 @@
 FROM python:3.9-slim-buster
 
 # Install necessary packages and libraries
-RUN apt-get update && \
-    apt-get install -y wget && \
-    wget https://github.com/exoscale/cli/releases/download/v1.66.0/exoscale-cli_1.66.0_linux_amd64.deb && \
-    dpkg -i /exoscale-cli_1.66.0_linux_amd64.deb
-
-# Install the ASReview package and gensim sentence-transformers
-RUN pip install asreview 
-
-# Create a folder for the Exoscale CLI
-RUN mkdir -p /app/exoscale
-
-# Set the Exoscale configuration file
-ENV EXOSCALE_CONFIG=/app/exoscale/exoscale.toml
+RUN apt-get update
+RUN pip install asreview exoscale
 
 # Set up synergy
 RUN mkdir -p /app/synergy
@@ -25,8 +14,8 @@ WORKDIR /app
 
 # Copy the simulation script into the container
 COPY run_simulation.sh .
+COPY upload_simulation_to_storage.py .
 
 # Set the entrypoint and default command
 ENTRYPOINT ["./run_simulation.sh"]
-CMD []
-
+CMD [$DATASET, $SIMULATION, $SETTINGS, $SIMULATION_ID, $BUCKET]
