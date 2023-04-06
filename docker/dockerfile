@@ -13,7 +13,6 @@ RUN pip install asreview
 RUN mkdir -p /app/exoscale
 
 # Create exoscale.toml file
-# COPY exoscale.toml /app/exoscale/exoscale.toml
 ENV EXOSCALE_CONFIG=/app/exoscale/exoscale.toml
 
 # Set up the working directory and copy the script
