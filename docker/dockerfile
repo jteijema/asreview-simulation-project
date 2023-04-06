@@ -1,0 +1,33 @@
+FROM python:3.9-slim-buster
+
+# Install necessary packages and libraries
+RUN apt-get update && \
+    apt-get install -y wget && \
+    wget https://github.com/exoscale/cli/releases/download/v1.66.0/exoscale-cli_1.66.0_linux_amd64.deb && \
+    dpkg -i /exoscale-cli_1.66.0_linux_amd64.deb
+
+# Install the ASReview package and gensim sentence-transformers
+RUN pip install asreview 
+
+# Create a folder for the Exoscale CLI and copy file
+RUN mkdir -p /app/exoscale
+
+ARG ACCOUNT
+ARG ACCOUNT_NAME
+ARG EXO_ACCESS_KEY_ID
+ARG ACCOUNT_SECRET
+
+# Create exoscale.toml file and set the environment variable
+RUN echo 'defaultaccount = "$ACCOUNT_NAME"\n\n[[accounts]]\n  account = "$ACCOUNT"\n  defaultZone = "de-fra-1"\n  endpoint = "https://api.exoscale.com/v1"\n  environment = ""\n  key = "$EXO_ACCESS_KEY_ID"\n  name = "$ACCOUNT_NAME"\n  secret = "$EXO_SECRET_ACCESS_KEY"' > /app/exoscale/exoscale.toml
+ENV EXOSCALE_CONFIG=/app/exoscale/exoscale.toml
+
+# Set up the working directory and copy the script
+WORKDIR /app
+
+# Copy the simulation script into the container
+COPY run_simulation.sh .
+
+# Set the entrypoint and default command
+ENTRYPOINT ["./run_simulation.sh"]
+CMD ["DATASET=$DATASET", "SETTINGS=$SETTINGS", "SIMULATION=$SIMULATION", "SIMULATION_ID=$SIMULATION_ID"]
+
