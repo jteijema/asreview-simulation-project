@@ -32,21 +32,32 @@ The following environment variables are required:
     SIMULATION: the name of the simulation to run
     SIMULATION_ID: the ID of the simulation (used to name the output directory)
 
+## Building the image
+You can build the image yourself by cloning this repository and running the following command:
+
+```console
+docker build -t asreview-simulate:latest .
+```
+
 ## Example
 
 Here's an example command that runs a simulation with the provided environment variables:
 
 ```console
-docker run --rm \
-  -e EXO_ACCESS_KEY_ID=<access_key> \
-  -e EXO_SECRET_ACCESS_KEY=<secret_key> \
-  -e ACCOUNT=<account> \
-  -e ACCOUNT_NAME=<account_name> \
-  -e DATASET=benchmark:van_de_schoot_2017 \
-  -e SETTINGS="-m nb -e tfidf" \
-  -e SIMULATION=test.asreview \
-  -e SIMULATION_ID=test1 \
+docker run --rm `
+  -e EXO_ACCESS_KEY_ID=<access_key> `
+  -e EXO_SECRET_ACCESS_KEY=<secret_key> `
+  -e ACCOUNT=<account> `
+  -e ACCOUNT_NAME=<account_name> `
+  -e BUCKET=<BUCKET> `
+  -e DATASET=benchmark:van_de_schoot_2017 `
+  -e SETTINGS="-m nb -e tfidf" `
+  -e SIMULATION=test.asreview `
+  -e SIMULATION_ID=test1 `
   asreview-simulate:latest
 ```
 
 Replace <access_key>, <secret_key>, <account>, and <account_name> with your Exoscale access key ID, secret access key, account name, and account name, respectively.
+
+## License
+MIT License
