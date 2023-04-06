@@ -1,5 +1,6 @@
 build_and_run.txt
-exoscale.toml
+docker/pyodss-custom.zip
+docker/tmp/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
