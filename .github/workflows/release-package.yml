@@ -30,5 +30,8 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
+        platforms: linux/amd64,linux/arm64
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: |
+          docker.pkg.github.com/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          docker.pkg.github.com/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
