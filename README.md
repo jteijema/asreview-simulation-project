@@ -49,7 +49,7 @@ docker run --rm `
   -e EXO_SECRET_ACCESS_KEY=<secret_key> `
   -e ACCOUNT=<account> `
   -e ACCOUNT_NAME=<account_name> `
-  -e BUCKET=<BUCKET> `
+  -e BUCKET=asreview-output `
   -e DATASET=benchmark:van_de_schoot_2017 `
   -e SETTINGS="-m nb -e tfidf" `
   -e SIMULATION=test.asreview `
