@@ -57,7 +57,7 @@ docker run --rm `
   asreview-simulate:latest
 ```
 
-Replace <access_key>, <secret_key>, <account>, and <account_name> with your Exoscale access key ID, secret access key, account name, and account name, respectively.
+Replace <access_key>, <secret_key>, \<account>, and <account_name> with your Exoscale access key ID, secret access key, account name, and account name, respectively.
 
 ## License
 MIT License
