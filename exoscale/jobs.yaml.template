@@ -1,0 +1,62 @@
+---
+name: kubern8s-template
+name_long: kubern8s - A Kubernetes-based workflow for running simulations on a cluster
+
+scripts:
+  - merge_tds.py
+
+docs:
+  - README.md
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: exoscale-sim-job
+spec:
+  template:
+    spec:
+      containers:
+{% for dataset in datasets %}
+      - name: asreview-simulation-project
+        image: ghcr.io/jteijema/asreview-simulation-project:latest
+        resources:
+          requests:
+            cpu: 500m
+            memory: 256Mi
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+        env:
+        - name: EXOSCALE_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: bucket-credentials
+              key: EXOSCALE_API_KEY
+        - name: EXOSCALE_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: bucket-credentials
+              key: EXOSCALE_API_SECRET
+        - name: EXOSCALE_STORAGE_ZONE
+          valueFrom:
+            secretKeyRef:
+              name: bucket-credentials
+              key: EXOSCALE_STORAGE_ZONE
+        - name: BUCKET
+          valueFrom:
+            secretKeyRef:
+              name: bucket-credentials
+              key: BUCKET
+        - name: DATASET
+          value: {{ dataset.input_file_stem }}
+        - name: SETTINGS
+          value: "-m nb -e tfidf"
+        - name: SIMULATION
+          value: {{ dataset.input_file_stem }}.asreview
+        - name: SIMULATION_ID
+          value: sim_{{ dataset.input_file_stem }}_1
+{% endfor %}
+      restartPolicy: Never
+  backoffLimit: 4
