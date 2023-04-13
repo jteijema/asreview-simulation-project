@@ -29,9 +29,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.CR_PAT }}
 
-    - name: Extract release tag
-      run: echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v4
