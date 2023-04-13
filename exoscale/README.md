@@ -3,5 +3,5 @@ With ASReview Makita, a jobs.yaml file can be generated to run a simulation. The
 
 ```console
 synergy get -l
-asreview makita template arfi --template jobs.yaml.template -s synergy_dataset
+asreview makita template arfi --template jobs.yaml.template -s synergy_dataset -f jobs.yaml
 ```

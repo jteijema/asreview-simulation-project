@@ -3,10 +3,8 @@ name: kubern8s-template
 name_long: kubern8s - A Kubernetes-based workflow for running simulations on a cluster
 
 scripts:
-  - merge_tds.py
 
 docs:
-  - README.md
 
 ---
 
