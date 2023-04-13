@@ -2,6 +2,8 @@
 
 This Docker image provides a pre-configured environment for running the ASReview simulation tool. The image is based on the official Python 3 Docker image and includes all dependencies required for running ASReview simulations.
 
+The image uses the [Synergy dataset](https://github.com/asreview/synergy-dataset-py).
+
 ## Usage
 
 To pull the image from GitHub Container Registry, run the following command:
@@ -34,7 +36,7 @@ The following environment variables are required:
     EXOSCALE_API_SECRET: the Exoscale secret access key
     EXOSCALE_STORAGE_ZONE: the Exoscale storage zone (e.g., de-fra-1)
     BUCKET: the name of the Exoscale bucket to use
-    DATASET: the name of the dataset to use from [synergy](https://github.com/asreview/synergy-dataset-py)
+    DATASET: the name of the dataset to use from synergy
     SETTINGS: the settings for the simulation
     SIMULATION: the name of the simulation to run
     SIMULATION_ID: the ID of the simulation (used to name the output directory)
