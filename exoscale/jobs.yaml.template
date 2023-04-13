@@ -51,7 +51,7 @@ spec:
           value: {{ dataset.input_file_stem }}
         - name: SETTINGS
           value: "-m nb -e tfidf"
-        - name: SIMULATION
+        - name: SIMULATION_FILE
           value: {{ dataset.input_file_stem }}.asreview
         - name: SIMULATION_ID
           value: sim_{{ dataset.input_file_stem }}_1
