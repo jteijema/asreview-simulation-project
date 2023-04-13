@@ -23,7 +23,7 @@ docker run --rm \
   -e BUCKET=<bucket_name> \
   -e DATASET=<dataset> \
   -e SETTINGS="<settings>" \
-  -e SIMULATION=<simulation_name> \
+  -e SIMULATION_FILE=<simulation_name> \
   -e SIMULATION_ID=<simulation_id> \
   asreview-simulate
 ```
@@ -38,7 +38,7 @@ The following environment variables are required:
     BUCKET: the name of the Exoscale bucket to use
     DATASET: the name of the dataset to use from synergy
     SETTINGS: the settings for the simulation
-    SIMULATION: the name of the simulation to run
+    SIMULATION_FILE: the name of the simulation to run
     SIMULATION_ID: the ID of the simulation (used to name the output directory)
 
 ## Building the image
@@ -60,7 +60,7 @@ docker run --rm `
   -e BUCKET=asreview-output `
   -e DATASET=Donners_2021 `
   -e SETTINGS="-m nb -e tfidf" `
-  -e SIMULATION=Donners_2021.asreview `
+  -e SIMULATION_FILE=Donners_2021.asreview `
   -e SIMULATION_ID=Donners_2021_simulation_output `
   asreview-simulate
 ```

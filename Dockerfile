@@ -19,4 +19,4 @@ COPY docker/upload_simulation_to_storage.py .
 
 # Set the entrypoint and default command
 ENTRYPOINT ["./run_simulation.sh"]
-CMD [$DATASET, $SIMULATION, $SETTINGS, $SIMULATION_ID, $BUCKET]
+CMD [$DATASET, $SIMULATION_FILE, $SETTINGS, $SIMULATION_ID, $BUCKET]
