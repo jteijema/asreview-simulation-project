@@ -36,12 +36,8 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
-        platforms: linux/amd64,linux/arm64
+        platforms: linux/amd64 #,linux/arm64
         push: true
         tags: |
           ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
           ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
-        labels: |
-          org.opencontainers.image.source=https://github.com/jteijema/asreview-simulation-project
-          org.opencontainers.image.description="ASReview Simulation Project"
-          org.opencontainers.image.licenses=MIT
