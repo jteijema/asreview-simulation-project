@@ -2,7 +2,7 @@ FROM ghcr.io/asreview/asreview:v1.2
 
 # Install necessary packages and libraries
 RUN apt-get update
-RUN pip install exoscale~=0.7.1
+RUN pip install exoscale~=0.7.1 sentence-transformers~=2.2.0 gensim~=4.2.0
 
 # Set up synergy
 RUN pip install --pre --upgrade synergy-dataset
