@@ -32,12 +32,17 @@ jobs:
     - name: Extract release tag
       run: echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v4
+      with:
+        images: ghcr.io/jteijema/asreview-simulation-project
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
         context: .
         platforms: linux/amd64 #,linux/arm64
         push: true
-        tags: |
-          ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
-          ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
