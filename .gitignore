@@ -1,6 +1,5 @@
 build_and_run.txt
-docker/pyodss-custom.zip
-docker/tmp/*
+docker/bucket-credentials.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
