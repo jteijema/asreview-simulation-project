@@ -1,8 +1,8 @@
-FROM python:3.9-slim-buster
+FROM ghcr.io/asreview/asreview:v1.2
 
 # Install necessary packages and libraries
 RUN apt-get update
-RUN pip install asreview exoscale
+RUN pip install exoscale~=0.7.1
 
 LABEL org.opencontainers.image.source https://github.com/jteijema/asreview-cloud-simulation-project
 
