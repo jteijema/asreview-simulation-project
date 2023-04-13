@@ -4,6 +4,10 @@ FROM ghcr.io/asreview/asreview:v1.2
 RUN apt-get update
 RUN pip install exoscale~=0.7.1
 
+LABEL org.opencontainers.image.source=https://github.com/jteijema/asreview-simulation-project
+LABEL org.opencontainers.image.description="An ASReview simulation container"
+LABEL org.opencontainers.image.licenses=MIT
+
 # Set up synergy
 RUN pip install --pre --upgrade synergy-dataset
 RUN mkdir -p /app/synergy
