@@ -42,6 +42,6 @@ jobs:
           ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
           ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
         labels: |
-          org.opencontainers.image.source=https://github.com/jteijema/asreview-cloud-simulation-project
-          org.opencontainers.image.description="ASReview Cloud Simulation Project"
+          org.opencontainers.image.source=https://github.com/jteijema/asreview-simulation-project
+          org.opencontainers.image.description="ASReview Simulation Project"
           org.opencontainers.image.licenses=MIT

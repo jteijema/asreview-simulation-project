@@ -9,8 +9,8 @@ The image uses the [Synergy dataset](https://github.com/asreview/synergy-dataset
 To pull the image from GitHub Container Registry, run the following command:
 
 ```console
-docker pull ghcr.io/jteijema/asreview-simulate:latest
-docker tag ghcr.io/jteijema/asreview-simulate:latest asreview-simulate
+docker pull ghcr.io/jteijema/asreview-simulation-project:latest
+docker tag ghcr.io/jteijema/asreview-simulation-project:latest asreview-simulate
 ```
 
 To use the image, you can run it with docker run, passing any required environment variables as -e arguments. Here's an example command that runs the image with all required environment variables:
