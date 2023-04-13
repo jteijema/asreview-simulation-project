@@ -5,7 +5,7 @@ on:
     types: [published]
 
 env:
-  IMAGE_NAME: asreview-simulate
+  IMAGE_NAME: asreview-simulation-project
   DOCKERFILE_PATH: Dockerfile
 
 jobs:
