@@ -7,9 +7,9 @@ RUN pip install asreview exoscale
 LABEL org.opencontainers.image.source https://github.com/jteijema/asreview-cloud-simulation-project
 
 # Set up synergy
+RUN pip install --pre --upgrade synergy-dataset
 RUN mkdir -p /app/synergy
-# COPY docker/pyodss-custom.zip /app/synergy/pyodss-custom.zip
-# RUN pip install /app/synergy/pyodss-custom.zip
+RUN synergy get -l -o ./app/synergy
 
 # Set up the working directory and copy the script
 WORKDIR /app

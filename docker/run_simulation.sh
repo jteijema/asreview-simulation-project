@@ -11,7 +11,7 @@ echo "SIMULATION: $SIMULATION"
 echo "SIMULATION_ID: $SIMULATION_ID"
 
 # Run the simulation
-asreview simulate $DATASET -s $SIMULATION $SETTINGS
+asreview simulate ./synergy/$DATASET.csv -s $SIMULATION $SETTINGS
 
 # Run the Python script
 python upload_simulation_to_storage.py "$SIMULATION" "$SIMULATION_ID" "$BUCKET"
