@@ -17,6 +17,9 @@ WORKDIR /app
 COPY docker/run_simulation.sh .
 COPY docker/upload_to_storage.py .
 
+# Make the script executable
+RUN chmod +x run_simulation.sh
+
 # Set the entrypoint and default command
 ENTRYPOINT ["./run_simulation.sh"]
 CMD [$DATASET, $SIMULATION_FILE, $SETTINGS, $SIMULATION_ID, $BUCKET]
