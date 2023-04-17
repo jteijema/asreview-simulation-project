@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
 {% for dataset in datasets %}
-      - name: asreview-simulation-project
+      - name: simulation-{{ dataset.input_file_stem }}
         image: ghcr.io/jteijema/asreview-simulation-project:latest
         resources:
           requests:
@@ -54,7 +54,7 @@ spec:
         - name: SIMULATION_FILE
           value: {{ dataset.input_file_stem }}.asreview
         - name: SIMULATION_ID
-          value: sim_{{ dataset.input_file_stem }}_1
+          value: sim_{{ dataset.input_file_stem }}_nb_tfidf
 {% endfor %}
       restartPolicy: Never
   backoffLimit: 4
