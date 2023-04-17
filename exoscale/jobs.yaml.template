@@ -17,35 +17,28 @@ spec:
     spec:
       containers:
 {% for dataset in datasets %}
-      - name: simulation-{{ dataset.input_file_stem }}
+      - name: simulation-{{ dataset.model_seed }}
         image: ghcr.io/jteijema/asreview-simulation-project:latest
-        resources:
-          requests:
-            cpu: 500m
-            memory: 256Mi
-          limits:
-            cpu: 1000m
-            memory: 512Mi
         env:
         - name: EXOSCALE_API_KEY
           valueFrom:
             secretKeyRef:
-              name: bucket-credentials
+              name: exoscale-credentials
               key: EXOSCALE_API_KEY
         - name: EXOSCALE_API_SECRET
           valueFrom:
             secretKeyRef:
-              name: bucket-credentials
+              name: exoscale-credentials
               key: EXOSCALE_API_SECRET
         - name: EXOSCALE_STORAGE_ZONE
           valueFrom:
             secretKeyRef:
-              name: bucket-credentials
+              name: exoscale-credentials
               key: EXOSCALE_STORAGE_ZONE
         - name: BUCKET
           valueFrom:
             secretKeyRef:
-              name: bucket-credentials
+              name: exoscale-credentials
               key: BUCKET
         - name: DATASET
           value: {{ dataset.input_file_stem }}
