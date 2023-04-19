@@ -2,7 +2,7 @@
 
 This Docker image provides a pre-configured environment for running the ASReview simulation tool. The image is based on the official Python 3 Docker image and includes all dependencies required for running ASReview simulations.
 
-The image uses the [Synergy dataset](https://github.com/asreview/synergy-dataset-py).
+The image uses the [Synergy dataset](https://github.com/asreview/synergy-dataset-py), and will run the ARFI template for a single dataset using [Makita](https://github.com/asreview/asreview-makita)
 
 ## Usage
 
@@ -23,8 +23,6 @@ docker run --rm \
   -e BUCKET=<bucket_name> \
   -e DATASET=<dataset> \
   -e SETTINGS="<settings>" \
-  -e SIMULATION_FILE=<simulation_name> \
-  -e SIMULATION_ID=<simulation_id> \
   asreview-simulate
 ```
 
@@ -38,8 +36,6 @@ The following environment variables are required:
     BUCKET: the name of the Exoscale bucket to use
     DATASET: the name of the dataset to use from synergy
     SETTINGS: the settings for the simulation
-    SIMULATION_FILE: the name of the simulation to run
-    SIMULATION_ID: the ID of the simulation (used to name the output directory)
 
 ## Building the image
 You can build the image yourself by cloning this repository and running the following command:
@@ -60,8 +56,6 @@ docker run --rm `
   -e BUCKET=asreview-output `
   -e DATASET=Donners_2021 `
   -e SETTINGS="-m nb -e tfidf" `
-  -e SIMULATION_FILE=Donners_2021.asreview `
-  -e SIMULATION_ID=Donners_2021_simulation_output `
   asreview-simulate
 ```
 
