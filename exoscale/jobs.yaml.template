@@ -11,14 +11,14 @@ docs:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: exoscale-sim-job-{{ datasets[0].input_file_stem.replace("_","-").lower() }}
+  name: exoscale-sim-job
 spec:
   parallelism: 4
   template:
     spec:
       containers:
 {% for dataset in datasets %}
-      - name: simulation-{{ datasets[0].input_file_stem.replace("_","-").lower() }}
+      - name: simulation-{{ dataset.input_file_stem.replace("_","-").lower() }}
         image: ghcr.io/jteijema/asreview-simulation-project:latest
         env:
         - name: EXOSCALE_API_KEY
