@@ -11,15 +11,14 @@ docs:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: exoscale-sim-job
+  name: exoscale-sim-job-{{ datasets[0].input_file_stem.replace("_","-").lower() }}
 spec:
-  parallelism: {{ datasets|length }}
+  parallelism: 4
   template:
     spec:
       containers:
 {% for dataset in datasets %}
-{% for prior in dataset.priors %}
-      - name: simulation-{{ dataset.model_seed }}-{{ prior[0] }}
+      - name: simulation-{{ datasets[0].input_file_stem.replace("_","-").lower() }}
         image: ghcr.io/jteijema/asreview-simulation-project:latest
         env:
         - name: EXOSCALE_API_KEY
@@ -45,12 +44,7 @@ spec:
         - name: DATASET
           value: {{ dataset.input_file_stem }}
         - name: SETTINGS
-          value: "-m nb -e tfidf --prior_record_id {{ " ".join(prior) }} --seed 400"
-        - name: SIMULATION_FILE
-          value: {{ dataset.input_file_stem }}_{{ prior[0] }}.asreview
-        - name: SIMULATION_ID
-          value: sim_{{ dataset.input_file_stem }}_nb_tfidf_arfi
-{% endfor %}
+          value: "-m nb -e tfidf"
 {% endfor %}
       restartPolicy: Never
-  backoffLimit: 1
+  backoffLimit: 4
