@@ -1,0 +1,26 @@
+---
+name: ARFI
+name_long: All Relevant, Fixed Irrelevant
+
+scripts:
+  - get_plot.py
+
+docs:
+
+---
+
+mkdir ./output
+
+{% for dataset in datasets %}
+{% for prior in dataset.priors %}
+asreview simulate ./{{ dataset.input_file }} --prior_record_id {{ " ".join(prior) }} --seed 400 -s ./output/sim_{{ prior[0] }}.asreview $SETTINGS > /dev/null
+asreview metrics ./output/sim_{{ prior[0] }}.asreview -o ./output/sim_{{ prior[0] }}_metrics.json > /dev/null
+python upload_to_storage.py "./output/sim_{{ prior[0] }}_metrics.json" "$DATASET $SETTINGS" "$BUCKET"
+echo ""
+
+{% endfor %}
+
+python {{ scripts_folder }}/get_plot.py -s ./output/ -o ./output/plot_recall_sim_{{ dataset.input_file_stem }}.png
+python upload_to_storage.py "./output/plot_recall_sim_{{ dataset.input_file_stem }}.png" "$DATASET $SETTINGS" "$BUCKET"
+
+{% endfor %}

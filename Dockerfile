@@ -3,6 +3,7 @@ FROM ghcr.io/asreview/asreview:v1.2
 # Install necessary packages and libraries
 RUN apt-get update
 RUN pip install exoscale~=0.7.1
+RUN pip install --upgrade asreview-makita~=0.6.3
 # sentence-transformers~=2.2.0 gensim~=4.2.0 
 
 # Set up synergy
@@ -16,6 +17,7 @@ WORKDIR /app
 # Copy the simulation script into the container
 COPY docker/run_simulation.sh .
 COPY docker/upload_to_storage.py .
+COPY docker/custom_arfi.txt.template .
 
 # Make the script executable
 RUN chmod +x run_simulation.sh
@@ -23,4 +25,4 @@ RUN chmod +x upload_to_storage.py
 
 # Set the entrypoint and default command
 ENTRYPOINT ["./run_simulation.sh"]
-CMD [$DATASET, $SIMULATION_FILE, $SETTINGS, $SIMULATION_ID, $BUCKET]
+CMD [$DATASET, $SETTINGS, $BUCKET]
