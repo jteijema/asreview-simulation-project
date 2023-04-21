@@ -2,6 +2,7 @@ build_and_run.txt
 exoscale/synergy_dataset
 docker/bucket-credentials.json
 *.yaml
+output_webserver/
 
 
 # Byte-compiled / optimized / DLL files
@@ -157,3 +158,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 exoscale/kubeval.exe
+exoscale/kubectl.exe
