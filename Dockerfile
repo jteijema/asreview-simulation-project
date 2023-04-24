@@ -7,7 +7,7 @@ RUN pip install --upgrade asreview-makita~=0.6.3
 RUN pip install sentence-transformers~=2.2.2 https://github.com/jteijema/asreview-reusable-fe/archive/main.zip https://github.com/jteijema/asreview-XGBoost/archive/main.zip gensim~=4.2.0 
 
 # Set up synergy
-RUN pip install --pre --upgrade synergy-dataset
+RUN pip install synergy-dataset
 RUN mkdir -p /app/synergy
 RUN synergy get -l -o ./app/synergy
 
