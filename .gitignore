@@ -5,6 +5,7 @@ docker/bucket-credentials.json
 output_webserver/simulations
 output_webserver/*.json
 output_webserver/Update_website.ipynb
+output_webserver/*.png
 
 
 # Byte-compiled / optimized / DLL files
@@ -159,5 +160,3 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-exoscale/kubeval.exe
-exoscale/kubectl.exe
