@@ -61,7 +61,7 @@ docker build -t asreview-simulate:latest .
 
 ## Exoscale
 
-The `exoscale` folder contains scripts for launching the cluster on Exoscale.
+The `exoscale` folder contains scripts for launching the cluster on Exoscale, and generating jobs for this cluster.
 
 ## Output
 
