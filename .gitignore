@@ -4,6 +4,7 @@ docker/bucket-credentials.json
 *.yaml
 output/*/
 output/update_website.ipynb
+output/plot_generation.ipynb
 
 
 # Byte-compiled / optimized / DLL files
