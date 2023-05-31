@@ -1,5 +1,7 @@
 # ASReview Simulation Project 
 
+[![DOI](https://zenodo.org/badge/624047221.svg)](https://zenodo.org/badge/latestdoi/624047221)
+
 This repository contains the code and supporting files for the ASReview simulation project. It is primarily intended for use with the paper (provide paper reference here) and offers a comprehensive package for running ASReview simulations, launching the cluster, and analyzing the results.
 
 The project is composed of three main components:
