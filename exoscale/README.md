@@ -1,6 +1,2 @@
 ## Generating jobs
-In this folder is a script that generates the jobs for the exoscale cloud provider. It uses synergy to generate the jobs and then adds the necessary labels and annotations to the jobs.
-
-```console
-synergy get -l
-```
+In this folder is a script that generates the jobs for the exoscale cloud provider. It generates a job for each combination of dataset and settings. The jobs are stored in the `jobs` folder.
