@@ -3,6 +3,7 @@ exoscale/synergy_dataset
 docker/bucket-credentials.json
 *.yaml
 output/*/
+output/*.ipynb
 
 
 # Byte-compiled / optimized / DLL files
