@@ -18,16 +18,16 @@ The image uses the [Synergy dataset](https://github.com/asreview/synergy-dataset
 
 To pull the image from GitHub Container Registry, run the following command:
 
-\```console
+```console
 docker pull ghcr.io/jteijema/asreview-simulation-project:latest
 docker tag ghcr.io/jteijema/asreview-simulation-project:latest asreview-simulate
-\```
+```
 
 ### Running the Docker Image
 
 To use the image, run it with `docker run`, passing any required environment variables as `-e` arguments. For example:
 
-\```console
+```console
 docker run --rm \
   -e EXOSCALE_API_KEY=<access_key> \
   -e EXOSCALE_API_SECRET=<secret_key> \
@@ -36,7 +36,7 @@ docker run --rm \
   -e DATASET=<dataset> \
   -e SETTINGS="<settings>" \
   asreview-simulate
-\```
+```
 
 Replace \<variable> with the appropriate values.
 
@@ -55,9 +55,9 @@ The following environment variables are required:
 
 You can build the image yourself by cloning this repository and running the following command:
 
-\```console
+```console
 docker build -t asreview-simulate:latest .
-\```
+```
 
 ## Exoscale
 
@@ -71,7 +71,7 @@ The `output` folder contains scripts for analyzing the results of a simulation s
 
 Here's an example command that runs a simulation with the provided environment variables:
 
-\```console
+```console
 docker run --rm \
   -e EXOSCALE_API_KEY=<access_key> \
   -e EXOSCALE_API_SECRET=<secret_key> \
@@ -80,7 +80,7 @@ docker run --rm \
   -e DATASET=Donners_2021 \
   -e SETTINGS="-m nb -e tfidf" \
   asreview-simulate
-\```
+```
 
 Replace <access_key> and <secret_key> with your Exoscale access key ID, secret access key, and account name, respectively.
 
