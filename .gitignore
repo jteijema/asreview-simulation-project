@@ -2,7 +2,7 @@ build_and_run.txt
 exoscale/synergy_dataset
 docker/bucket-credentials.json
 *.yaml
-output
+output/*/
 
 
 # Byte-compiled / optimized / DLL files
