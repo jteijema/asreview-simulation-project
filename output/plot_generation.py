@@ -1,12 +1,12 @@
 # %%
-from asreviewcontrib.insights.plot import _plot_recall
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import json
 import os
 import pandas as pd
 import numpy as np
+
+from asreviewcontrib.insights.plot import _plot_recall
+
 
 # %%
 # get all folders in simulations
@@ -42,9 +42,11 @@ dataset_records = {
     "Wolters_2018": 4280
 }
 
+
 # %%
 def get_labels(df):
     return [[inner_list[1] for inner_list in row] for row in df.iloc[:, 4].apply(lambda x: x['value'])]
+
 
 def tds_to_records(labels):
     records = []
@@ -55,8 +57,10 @@ def tds_to_records(labels):
             records.append(0)
     return records
 
+
 def pad_simulation_labels(labels, n_records):
     return labels + np.zeros(n_records - len(labels)).tolist()
+
 
 # %%
 for folder in folders:
@@ -64,15 +68,15 @@ for folder in folders:
 
     # get all json files in folder
     files = os.listdir("simulations\\" + folder)
-    
+
     # loop over files and append metrics to list
     for file in files:
         if file.endswith(".json"):
             # open file
             with open(os.path.join("simulations\\", folder, file), 'r') as f:
-                        data = json.load(f)
-                        metrics.append(data['data']['items'])
-    
+                data = json.load(f)
+                metrics.append(data['data']['items'])
+
     df = pd.DataFrame(metrics)
 
     fig, ax = plt.subplots()
@@ -90,7 +94,5 @@ for folder in folders:
     fig.set_size_inches(6.4, 4.8)
 
     # save figure
-    plt.savefig("plots\plot_recall_sim_"+folder+".png", facecolor='w', dpi=100)
+    plt.savefig(".\plots\plot_recall_sim_"+folder+".png", facecolor='w', dpi=100)
     print("Saved plot for " + folder)
-
-
