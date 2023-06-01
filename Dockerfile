@@ -4,7 +4,8 @@ FROM ghcr.io/asreview/asreview:v1.2
 RUN apt-get update
 RUN pip install exoscale~=0.7.1
 RUN pip install --upgrade asreview-makita~=0.6.3
-RUN pip install sentence-transformers~=2.2.2 https://github.com/jteijema/asreview-reusable-fe/archive/main.zip gensim~=4.2.0 tensorflow~=2.9.1
+RUN pip install sentence-transformers~=2.2.2 gensim~=4.2.0 tensorflow~=2.12.0
+RUN pip install https://github.com/jteijema/asreview-reusable-fe/archive/main.zip
 
 # Set up synergy
 RUN pip install synergy-dataset
